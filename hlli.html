@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: green; /* Changed the background color to green */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff3366;
+            animation: slideIn 1.5s ease-out;
+            transition: transform 0.3s, color 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.1);
+            color: green; /* Green color on hover */
+        }
+        p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            animation: fadeUp 2s ease-out;
+            transition: color 0.3s, transform 0.3s;
+        }
+        p:hover {
+            color: green; /* Green color on hover */
+            transform: scale(1.05);
+        }
+        .btn-container {
+            margin-top: 20px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+        button {
+            background: #ff3366;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: #cc2952;
+            transform: scale(1.1);
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: green; /* Set default text color to green */
+            animation: fadeIn 3s ease-in-out;
+        }
+        .yes-btn {
+            position: absolute;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine, Yashika 💖</h1>
+        <p>Make this Valentine's Day special by saying yes!</p>
+        <div class="btn-container">
+            <button onclick="reply('Yes')">Yes</button>
+            <button onclick="reply('No')">No</button>
+        </div>
+        <div id="response"></div>
+        <div class="countdown" id="countdown"></div>
+        <img id="gifImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQstMF3o1yxGWUy77e3xpz3uqcedT97wYnKVQ&s" alt="cutie-cat">
+    </div>
+
+    <script>
+        let yesCount = 0; // Keep track of how many Yes buttons there are
+
+        function reply(answer) {
+            const response = document.getElementById("response");
+            const funnyResponses = [
+                "Yashika, I love you! 🥺", 
+                "C'mon Yashika! 💞",
+                "I LOVE U! 🍫",
+                "BACHA ?! ", 
+                "GANDI BACHI 💔 !"
+            ];
+
+            const gifImage = document.getElementById("gifImage"); // Get the image element
+
+            if (answer === 'Yes') {
+                response.textContent = "IDk, how I react! You've made my day, Gudu! 🥰";
+                gifImage.src = "https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif"; // Change GIF when Yes is clicked
+                resetButtons(); // Reset buttons when 'Yes' is clicked
+            } else {
+                const randomResponse = funnyResponses[Math.floor(Math.random() * funnyResponses.length)];
+                response.textContent = randomResponse;
+                gifImage.src = "https://c.tenor.com/QRKXmc5qWpoAAAAC/tenor.gif"; // Change GIF when No is clicked
+                createYesButtons(); // Create more Yes buttons if 'No' is clicked
+            }
+        }
+
+        function createYesButtons() {
+            // Generate multiple Yes buttons around the page
+            for (let i = 0; i < 10; i++) {
+                const yesBtn = document.createElement('button');
+                yesBtn.classList.add('yes-btn');
+                yesBtn.innerText = 'Yes';
+                yesBtn.style.top = Math.random() * window.innerHeight + 'px';
+                yesBtn.style.left = Math.random() * window.innerWidth + 'px';
+
+                yesBtn.onclick = () => reply('Yes');
+                document.body.appendChild(yesBtn); // Append button to the body
+                yesCount++; // Increase the count of Yes buttons
+            }
+
+            // If there are too many buttons, let them cover the entire screen
+            if (yesCount > 100) {
+                document.body.style.overflow = 'auto'; // Enable scrolling when there are too many buttons
+            }
+        }
+
+        function resetButtons() {
+            // Optionally reset all the buttons
+            const existingYesBtns = document.querySelectorAll('.yes-btn');
+            existingYesBtns.forEach(btn => btn.remove());
+            yesCount = 0; // Reset button count when 'Yes' is clicked
+        }
+    </script>
+</body>
+</html>
+
+
+
