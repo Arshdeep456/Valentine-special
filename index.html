@@ -92,7 +92,7 @@
         </div>
         <div id="response"></div>
         <div class="countdown" id="countdown"></div>
-        <img id="gifImage" src="tenor.gif" alt="cutie-cat">
+        <img id="gifImage" src="main.png" alt="cutie-cat">
     </div>
 
     <script>
@@ -112,12 +112,12 @@
 
             if (answer === 'Yes') {
                 response.textContent = "IDk, how I react! You've made my day, Gudu! 🥰";
-                gifImage.src = "https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif"; // Change GIF when Yes is clicked
+                gifImage.src = "yes.gif"; // Change GIF when Yes is clicked
                 resetButtons(); // Reset buttons when 'Yes' is clicked
             } else {
                 const randomResponse = funnyResponses[Math.floor(Math.random() * funnyResponses.length)];
                 response.textContent = randomResponse;
-                gifImage.src = "https://c.tenor.com/QRKXmc5qWpoAAAAC/tenor.gif"; // Change GIF when No is clicked
+                gifImage.src = "tenor.gif"; // Change GIF when No is clicked
                 createYesButtons(); // Create more Yes buttons if 'No' is clicked
             }
         }
@@ -151,6 +151,7 @@
     </script>
 </body>
 </html>
+
 
 
 
